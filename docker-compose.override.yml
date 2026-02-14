@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    environment:
+      MSSQL_PID: "Developer"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  sqlserver-data:

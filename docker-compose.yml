@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      SA_PASSWORD: "@Saggezza2026"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  authservice:
+    build:
+      context: .
+      dockerfile: AuthService/AuthService.API/Dockerfile
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=AuthServiceDb;User Id=sa;Password=@Saggezza2026;TrustServerCertificate=True;
+      - Jwt__Key=fK82kd!@#92jdksKDJF0923jdsf09KDJFJSDlskdjf8923
+      - Jwt__Issuer=AuthService
+    volumes:
+      - authservice-dpkeys:/home/app/.aspnet/DataProtection-Keys
+    depends_on:
+      - sqlserver
+
+  supplierservice:
+    build:
+      context: .
+      dockerfile: SupplierSevice/SupplierService.API/Dockerfile
+    ports:
+      - "5002:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=SupplierServiceDb;User Id=sa;Password=@Saggezza2026;TrustServerCertificate=True;
+      - Jwt__Key=fK82kd!@#92jdksKDJF0923jdsf09KDJFJSDlskdjf8923
+      - Jwt__Issuer=AuthService
+    volumes:
+      - supplierservice-dpkeys:/home/app/.aspnet/DataProtection-Keys
+    depends_on:
+      - sqlserver
+
+volumes:
+  sqlserver-data:
+  authservice-dpkeys:
+  supplierservice-dpkeys:

@@ -1,0 +1,6 @@
+@Saggezza.Microservices_HostAddress = http://localhost:5050
+
+GET {{Saggezza.Microservices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
