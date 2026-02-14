@@ -161,21 +161,21 @@ Execute os testes pela sua IDE ou via CLI.
 
 ```text
 .
-?? AuthService/
-?  ?? AuthService.API/
-?  ?? AuthService.Application/
-?  ?? AuthService.Domain/
-?  ?? AuthSerrvice.Infrastructure/
-?  ?? AuthService.Tests/
-?? SupplierSevice/
-?  ?? SupplierService.API/
-?  ?? SupplierService.Application/
-?  ?? SupplierService.Domain/
-?  ?? SupplierService.Infrastructure/
-?  ?? SupplierServicee.Test/
-?? SharedKernel/
-?? docker-compose.yml
-?? docker-compose.override.yml
+	AuthService/
+		AuthService.API/
+		AuthService.Application/
+		AuthService.Domain/
+		AuthSerrvice.Infrastructure/
+		AuthService.Tests/
+	SupplierSevice/
+		SupplierService.API/
+		SupplierService.Application/
+		SupplierService.Domain/
+		SupplierService.Infrastructure/
+		SupplierServicee.Test/
+	SharedKernel/
+	docker-compose.yml
+	docker-compose.override.yml
 ```
 
 ## Troubleshooting
